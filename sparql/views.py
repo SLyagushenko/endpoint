@@ -34,9 +34,12 @@ def index(request):
                 response['Content-Length'] = len(_csv)
             elif request_types[3] in http_accept:
                 response = HttpResponseForbidden('TSV Not Implemented')
-            else: response = HttpResponseForbidden('403 Forbidden')
+            else:
+                #db.update_graph(query)
+                #response = HttpResponse('Graph Update Done!')
+                response = HttpResponseForbidden('403 Forbidden')
             return response
     else:
         return HttpResponseForbidden('403 Forbidden')
 
-    return HttpResponse('Not Implemented')
+    return HttpResponseForbidden('Not Implemented')

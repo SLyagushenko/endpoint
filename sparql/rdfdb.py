@@ -44,3 +44,6 @@ class RDFdb:
         _csv = result.getvalue()
         result.close()  
         return _csv
+
+    def update_graph(self, query):
+        self.graph.update(query)
