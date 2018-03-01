@@ -21,7 +21,8 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    url(r'^$', TemplateView.as_view(template_name="yasgui.html")),
-    url(r'sparql/', include('sparql.urls')),
+    url(r'^yasgui/', TemplateView.as_view(template_name="yasgui.html")),
+    url(r'^snapper/', TemplateView.as_view(template_name="snapper.html")),
+    url(r'^sparql/', include('sparql.urls')),
     url(r'^admin/', admin.site.urls),
 ] + staticfiles_urlpatterns()
