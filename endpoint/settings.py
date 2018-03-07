@@ -35,12 +35,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
+    'oauth2_provider',
 ]
 
 INTERNAL_IPS = [
     '127.0.0.1',
     '172.17.4.19'
 ]
+
+
+AUTHENTICATION_BACKENDS = (
+    'oauth2_provider.backends.OAuth2Backend',
+    'django.contrib.auth.backends.ModelBackend',
+)
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -50,7 +59,18 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'oauth2_provider.middleware.OAuth2TokenMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
+
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+LOGIN_URL = '/login/'
+
+LOGIN_REDIRECT_URL = '/'
+
+LOGOUT_REDIRECT_URL = '/'
 
 CONFIG_DEFAULTS = {
     'SHOW_TOOLBAR_CALLBACK': False,

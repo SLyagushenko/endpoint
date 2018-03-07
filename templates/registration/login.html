@@ -1,24 +1,27 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 {% load static %}
+{% block content %}
+<!--
+	Landed by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
 	<head>
-		<title>Snapper Turtle Editor</title>
+		<title>SPARQL Endpoint</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="{% static "main-js/js/ie/html5shiv.js" %}"></script><![endif]-->
+		<link rel="stylesheet" href="{% static "main-css/main.css" %}" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="{% static "main-css/ie9.css" %}" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="{% static "main-css/ie8.css" %}" /><![endif]-->
-    <link rel="stylesheet" href="{% static "snapper-css/vendor-d102fb72f5.css" %}">
-    <link rel="stylesheet" href="{% static "snapper-css/main-e644c8c2be.css" %}">
-		<link rel="stylesheet" href="{% static "main-css/main.css" %}" />
-
 	</head>
 	<body class="wrapper style1">
 		<div id="page-wrapper">
 
 			<!-- Header -->
 				<header id="header">
-					<h1 id="logo">Snapper Turtle Editor</h1>
+					<h1 id="logo">Log In / Sign Up</h1>
 					<nav id="nav">
 						<ul>
 							<li><a href="/">Home</a></li>
@@ -35,8 +38,22 @@
 				</header>
 		</div>
 
-		<section ng-app="app">
-			<main ui-view=""></main>
+		<section class="wrapper style1">
+			  <h3>Login</h3>
+			  <form method="post">
+          <div class="row uniform 50%">
+			      {% csrf_token %}
+			      {{ form.as_p }}
+			      <input type="hidden" name="next" value="{{ next }}" />
+          </div>
+          <div class="12u$">
+            <ul class="actions">
+			         <li>
+                <button type="submit" class="button special" >Log In</button>
+              </li>
+            </ul>
+          </div>
+			  </form>
 		</section>
 
 		<!-- Scripts -->
@@ -49,8 +66,6 @@
 			<!--[if lte IE 8]><script src="{% static "main-js/ie/respond.min.js" %}"></script><![endif]-->
 			<script src="{% static "main-js/main.js" %}"></script>
 
-			<script src="{% static "snapper-js/vendor-2ef948d28c.js" %}"></script>
-			<script src="{% static "snapper-js/main-62d28d3742.js" %}"></script>
-
 	</body>
 </html>
+{% endblock %}

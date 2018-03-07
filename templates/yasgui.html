@@ -7,22 +7,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>YASGUI</title>
     <link href="//cdn.jsdelivr.net/yasgui/2.5.0/yasgui.min.css" rel='stylesheet' type='text/css'/>
-    <style>
-      /** uncomment this if you'd like to hide the endpoint selector
-      .yasgui .endpointText {display:none !important;}
-      **/
-    </style>
+    <link rel="stylesheet" href="{% static "main-css/main.css" %}" />
   </head>
-  <body>
-	  <div id='yasgui'></div>
-    <script src="//cdn.jsdelivr.net/yasgui/2.5.0/yasgui.min.js"></script>
-    <script type="text/javascript">
-	    var yasgui = YASGUI(document.getElementById("yasgui"), {
-        //Uncomment below to change the default endpoint
-        //Note: If you've already opened the YASGUI page before, you should first clear your
-        //local-storage cache before you will see the changes taking effect 
-        //yasqe:{sparql:{endpoint:'bla'}}
-      });
-    </script>
-  </body>
+  <body class="wrapper style1">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<header id="header">
+					<h1 id="logo">YASGUI</h1>
+					<nav id="nav">
+						<ul>
+              <li><a href="/">Home</a></li>
+              {% if user.is_authenticated %}
+              <li><a href="/yasgui/">YASGUI</a></li>
+              <li><a href="/snapper/">Snapper</a></li>
+              <li><a href="/logout/" class="button special">Log Out</a></li>
+              {% endif %}
+              {% if not user.is_authenticated %}
+							<li><a href="/login/" class="button special">Log In / Sign Up</a></li>
+              {% endif %}
+						</ul>
+					</nav>
+				</header>
+		</div>
+
+    <section>
+      <div id='yasgui'></div>
+      <script src="//cdn.jsdelivr.net/yasgui/2.5.0/yasgui.min.js"></script>
+      <script type="text/javascript">
+        var yasgui = YASGUI(document.getElementById("yasgui"), {
+        });
+      </script>
+    </section>
+
+		<!-- Scripts -->
+			<script src="{% static "main-js/jquery.min.js" %}" ></script>
+			<script src="{% static "main-js/jquery.scrolly.min.js" %}" ></script>
+			<script src="{% static "main-js/jquery.dropotron.min.js" %}" ></script>
+			<script src="{% static "main-js/jquery.scrollex.min.js" %}" ></script>
+			<script src="{% static "main-js/skel.min.js" %}" ></script>
+			<script src="{% static "main-js/util.js" %}" ></script>
+			<!--[if lte IE 8]><script src="{% static "main-js/ie/respond.min.js" %}"></script><![endif]-->
+			<script src="{% static "main-js/main.js" %}"></script>
+
+			<script src="{% static "snapper-js/vendor-2ef948d28c.js" %}"></script>
+			<script src="{% static "snapper-js/main-62d28d3742.js" %}"></script>
+
+	</body>
 </html>
